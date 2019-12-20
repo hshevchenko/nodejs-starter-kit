@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon src/server.js"
   },
   "devDependencies": {
     "eslint": "^6.7.2",
@@ -28,7 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "eslint ."
+      "pre-commit": "npx prettier --write && eslint src/*.js --fix-dry-run"
     }
   }
 }
