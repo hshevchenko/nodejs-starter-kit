@@ -28,7 +28,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx prettier --write && eslint src/*.js --fix-dry-run"
+      "pre-commit": "npx prettier src/*.js --write && eslint src/*.js --fix-dry-run"
     }
   }
 }
