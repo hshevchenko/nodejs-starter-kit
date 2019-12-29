@@ -7,6 +7,14 @@ Project custom configuration like port number to run on, environment and so on.
 ### Logging
 
 Morgan and Winston logging libraries to log HTTP requests and different level logs.
+The logger configuration specifies following rules:
+## Pre-production:
+Level: silly
+Transport: console and log file
+
+## Production:
+Level: info
+Transport: console and Loggly
 
 ### Prettier/Linter
 
