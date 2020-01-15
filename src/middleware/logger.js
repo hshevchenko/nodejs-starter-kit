@@ -1,5 +1,6 @@
 const { isProduction } = require('../config')
 const { createLogger, transports, format } = require('winston')
+const { Loggly } = require('winston-loggly-bulk')
 
 const levelByEnv = () => {
   if (isProduction()) {
@@ -10,10 +11,20 @@ const levelByEnv = () => {
 }
 
 const transportsByEnv = () => {
-  const _transports = [
-    new transports.Console(),
-    new transports.File({ filename: './logs/app.log' })
-  ]
+  const _transports = [new transports.Console()]
+
+  if (isProduction()) {
+    _transports.push(
+      new Loggly({
+        token: '3ce84ef4-239c-47e5-9f2b-365ddf07170c',
+        subdomain: 'olena',
+        json: true,
+        tags: ['nodejs-starter-kit']
+      })
+    )
+  } else {
+    _transports.push(new transports.File({ filename: './logs/app.log' }))
+  }
 
   return _transports
 }
@@ -41,4 +52,10 @@ const logger = createLogger({
   format: formatByEnv()
 })
 
-module.exports = logger
+const logstream = {
+  write: (message, encoding) => {
+    logger.info(message)
+  }
+}
+
+module.exports = { logger, logstream }

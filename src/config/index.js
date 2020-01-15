@@ -2,7 +2,7 @@ const PRODUCTION = 'production'
 const DEV = 'development'
 
 const env = () => {
-  return process.env.NODE_ENV === PRODUCTION || DEV
+  return process.env.NODE_ENV || DEV
 }
 
 const isProduction = () => {
