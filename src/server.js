@@ -2,17 +2,15 @@ const express = require('express')
 const routes = require('./routes')
 const middleware = require('./middleware')
 const { logger } = require('./middleware/logger')
-const { env } = require('./config')
+const config = require('./config')
 
 const app = express()
 
 app.use(middleware)
 app.use('/status', routes.status)
 
-const port = process.env.PORT || 3000
-
-app.listen(port, () => {
+app.listen(config.port, () => {
   logger.info(
-    `Application is listening on port ${port}, environment = ${env()}`
+    `Application is listening on port ${config.port}, environment = ${config.env}`
   )
 })

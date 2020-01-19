@@ -4,6 +4,9 @@ This is a starter Express JS server-side application. The setup includes:
 
 Project custom configuration like port number to run on, environment and so on.
 
+### Data Store
+Postgres used as database
+
 ### Logging
 
 Morgan and Winston logging libraries to log HTTP requests and different level logs.
