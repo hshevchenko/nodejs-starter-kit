@@ -1,8 +1,12 @@
 const express = require('express')
 const routes = require('./routes')
 const middleware = require('./middleware')
-const { logger } = require('./middleware/logger')
+const { logger } = require('./aspects/logger')
 const config = require('./config')
+const { connectDatabase } = require('./db')
+
+// Connect to database
+connectDatabase()
 
 const app = express()
 

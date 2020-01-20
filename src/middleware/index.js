@@ -1,4 +1,4 @@
 const morgan = require('morgan')
-const { logstream } = require('./logger')
+const { logstream } = require('../aspects/logger')
 
 module.exports = [morgan('tiny', { stream: logstream })]
